@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const Navbar = () => {
   const { setTheme } = useTheme();
@@ -25,6 +26,7 @@ const Navbar = () => {
               <span className="sr-only">Toggle theme</span>
             </Button>
           </DropdownMenuTrigger>
+          <LanguageSwitcher />
           <DropdownMenuContent align="end">
             <DropdownMenuItem onClick={() => setTheme("light")}>
               Light

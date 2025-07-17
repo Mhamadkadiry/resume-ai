@@ -1,0 +1,38 @@
+{
+  "common": {
+    "resumeAI": "Resume AI"
+  },
+  "auth": {
+    "welcomeBack": "Welcome back",
+    "loginWithAccount": "Login with your Apple or Google account",
+    "loginWithApple": "Login with Apple",
+    "loginWithGoogle": "Login with Google",
+    "orContinue": "Or continue with",
+    "email": "Email",
+    "emailPlaceholder": "m@example.com",
+    "password": "Password",
+    "forgotPassword": "Forgot your password?",
+    "login": "Login",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "byContinuing": "By clicking continue, you agree to our",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "and": "and"
+  },
+  "navigation": {
+    "home": "Home",
+    "resumes": "Resumes",
+    "search": "Search",
+    "application": "Application",
+    "candidates": "Candidates",
+    "addCandidate": "Add Candidate",
+    "settings": "Settings",
+    "logout": "Logout",
+    "myAccount": "My Account"
+  },
+  "dashboard": {
+    "welcome": "Welcome to Resume AI",
+    "description": "AI-powered resume builder"
+  }
+}

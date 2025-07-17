@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronUp, Home, Plus, Search, User2 } from "lucide-react";
 import {
   Sidebar,
@@ -14,7 +16,6 @@ import {
   SidebarSeparator,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-import Image from "next/image";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,14 +23,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-const items = [
-  { label: "Home", href: "/", icon: Home },
-  { label: "Resumes", href: "/resumes", icon: Home },
-  { label: "Search", href: "/search", icon: Search },
-];
+import { Logo } from "@/components/Logo";
+import { useTranslations } from "next-intl";
 
 const AppSidebar = () => {
+  const t = useTranslations("navigation");
+
+  const items = [
+    { label: t("home"), href: "/", icon: Home },
+    { label: t("resumes"), href: "/resumes", icon: Home },
+    { label: t("search"), href: "/search", icon: Search },
+  ];
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="py-4">
@@ -37,8 +41,7 @@ const AppSidebar = () => {
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <Link href="/">
-                <Image src="/logo.svg" alt="Logo" width={30} height={30} />
-                <span className="ml-1">Resume AI</span>
+                <Logo size="sm" />
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -47,7 +50,7 @@ const AppSidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("application")}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -64,9 +67,9 @@ const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel>Candidates</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("candidates")}</SidebarGroupLabel>
           <SidebarGroupAction>
-            <Plus /> <span className="sr-only">Add Candidate</span>
+            <Plus /> <span className="sr-only">{t("addCandidate")}</span>
           </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -74,7 +77,7 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Link href="/candidates">
                     <User2 />
-                    <span>Candidates</span>
+                    <span>{t("candidates")}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -97,10 +100,10 @@ const AppSidebar = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem>
-                  <Link href="/settings">Settings</Link>
+                  <Link href="/settings">{t("settings")}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href="/logout">Logout</Link>
+                  <Link href="/logout">{t("logout")}</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
