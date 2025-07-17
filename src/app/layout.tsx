@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { MantineProvider } from '@mantine/core';
+import "./globals.css";
+import AppSidebar from "@/components/AppSidebar";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,10 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <MantineProvider>
-          {children}
-        </MantineProvider>
+      <body className="flex">
+        <AppSidebar />
+        <main className="w-full">
+          <Navbar />
+          <div className="px-4">
+           {children}
+          </div>
+        </main>
       </body>
     </html>
   );
