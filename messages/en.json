@@ -15,6 +15,10 @@
     "login": "Login",
     "noAccount": "Don't have an account?",
     "signUp": "Sign up",
+    "haveAccount": "Already have an account?",
+    "name": "Name",
+    "createAccount": "Create Account",
+    "createAccountDescription": "Enter your details to create your account",
     "byContinuing": "By clicking continue, you agree to our",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy",
@@ -30,6 +34,12 @@
     "settings": "Settings",
     "logout": "Logout",
     "myAccount": "My Account"
+  },
+  "navbar": {
+    "welcome": "Welcome",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
   },
   "dashboard": {
     "welcome": "Welcome to Resume AI",

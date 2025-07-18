@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { AuthProvider } from "@/components/providers/AuthProvider";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "Resume AI",
@@ -18,23 +19,31 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
+
+  // Validate locale
+  const locales = ["en", "de"] as const;
+  if (!locales.includes(locale as (typeof locales)[number])) {
     notFound();
   }
+
+  // Get messages for the current locale
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body style={{ fontFamily: "Tahoma, Geneva, sans-serif" }}>
-        <NextIntlClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <AuthProvider>
+          <NextIntlClientProvider messages={messages}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </AuthProvider>
       </body>
     </html>
   );
